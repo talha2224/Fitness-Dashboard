@@ -72,7 +72,7 @@ const LoginPage = () => {
                         <input required={true} type="password" name="password" placeholder="Password" className="w-[100%] mt-2 border p-2 rounded outline-none block" onChange={handleChange} />
                     </form>
                     <button className="w-full bg-[#9FE7F5] p-2 rounded mt-4" onClick={handleLogin}>Sign In</button>
-                    <p className="text-center mt-2 text-[#3D8977]">Don't have an account? <Link to="/register" className="text-blue-500">Sign Up</Link></p>
+                    {/* <p className="text-center mt-2 text-[#3D8977]">Don't have an account? <Link to="/register" className="text-blue-500">Sign Up</Link></p> */}
                 </div>
             </div>
         </div>
