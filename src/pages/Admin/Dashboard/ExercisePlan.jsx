@@ -15,7 +15,9 @@ const ExercisePlan = () => {
         notes: '',
         guide: '',
         sets: '',
-        duration: ''
+        duration: '',
+        plan: "free",
+        reps: 1
     });
 
     const fetchDashboardData = async () => {
@@ -36,6 +38,8 @@ const ExercisePlan = () => {
         form.append('guide', formData.guide);
         form.append('duration', formData.duration);
         form.append('sets', formData.sets);
+        form.append('plan', formData.plan);
+        form.append('reps', formData.reps);
 
         try {
             const response = await axios.post(`${config.baseUrl}/exercise/create`, form);
@@ -105,6 +109,8 @@ const ExercisePlan = () => {
                                     <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Notes</th>
                                     <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Guide</th>
                                     <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Sets</th>
+                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Reps</th>
+                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Plan</th>
                                     <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Duration</th>
                                     <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Created At</th>
                                     <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Actions</th>
@@ -119,6 +125,8 @@ const ExercisePlan = () => {
                                         <td className="py-2 px-4 border-b text-nowrap text-sm text-[#007AFF]">{`${i?.notes}`}</td>
                                         <td className="py-2 px-4 border-b text-nowrap text-sm text-[#616161]">{i?.guide}</td>
                                         <td className="py-2 px-4 border-b text-nowrap text-sm text-[#616161]">{i?.sets}</td>
+                                        <td className="py-2 px-4 border-b text-nowrap text-sm text-[#616161]">{i?.reps}</td>
+                                        <td className="py-2 px-4 border-b text-nowrap text-sm text-[#616161]">{i?.plan}</td>
                                         <td className="py-2 px-4 border-b text-nowrap text-sm text-[#616161]">{i?.duration}</td>
                                         <td className="py-2 px-4 border-b text-nowrap text-sm text-[#616161]">{new Date(i.createdAt).toLocaleDateString()}</td>
                                         <td className="py-2 px-4 border-b flex gap-x-3">
@@ -131,7 +139,6 @@ const ExercisePlan = () => {
                     </div>
                     :
                     <h1 className='text-center mt-48 text-lg'>No Workout Plan Found</h1>
-
             }
             {showModal && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
@@ -143,7 +150,16 @@ const ExercisePlan = () => {
                             <textarea type="text" placeholder="Notes" className="w-full border px-3 py-2 rounded" onChange={e => setFormData({ ...formData, notes: e.target.value })} />
                             <textarea type="number" placeholder="Guide" className="w-full border px-3 py-2 rounded" onChange={e => setFormData({ ...formData, guide: e.target.value })} />
                             <input type="number" placeholder="Sets" className="w-full border px-3 py-2 rounded" onChange={e => setFormData({ ...formData, sets: e.target.value })} />
+                            <input type="number" placeholder="Reps" className="w-full border px-3 py-2 rounded" onChange={e => setFormData({ ...formData, reps: e.target.value })} />
                             <input type="number" placeholder="Duration" className="w-full border px-3 py-2 rounded" onChange={e => setFormData({ ...formData, duration: e.target.value })} />
+                            <select
+                                className="w-full border px-3 py-2 rounded mt-2"
+                                value={formData.plan}
+                                onChange={e => setFormData({ ...formData, plan: e.target.value })}
+                            >
+                                <option value="free">Free</option>
+                                <option value="paid">Paid</option>
+                            </select>
                         </div>
                         <div className="flex justify-end gap-2 mt-4">
                             <button className="bg-gray-200 px-4 py-2 rounded" onClick={() => setShowModal(false)}>Cancel</button>

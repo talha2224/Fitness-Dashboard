@@ -18,7 +18,9 @@ const AdminDietPlan = () => {
         carb: '',
         fat: '',
         shift: '',
-        timings: ''
+        timings: '',
+        plan: "free"
+
     });
 
     const fetchDashboardData = async () => {
@@ -42,6 +44,7 @@ const AdminDietPlan = () => {
         form.append('fat', formData.fat);
         form.append('shift', formData.shift);
         form.append('timings', formData.timings);
+        form.append('plan', formData.plan==="undefined"?"free":formData.plan);
 
         try {
             const response = await axios.post(`${config.baseUrl}/diet/create`, form);
@@ -114,6 +117,7 @@ const AdminDietPlan = () => {
                                     <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Carb</th>
                                     <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Fat</th>
                                     <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Shift</th>
+                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Plan</th>
                                     <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Timings</th>
 
                                     <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Created At</th>
@@ -132,6 +136,8 @@ const AdminDietPlan = () => {
                                         <td className="py-2 px-4 border-b text-nowrap text-sm text-[#616161]">{i?.carb}</td>
                                         <td className="py-2 px-4 border-b text-nowrap text-sm text-[#616161]">{i?.fat}</td>
                                         <td className="py-2 px-4 border-b text-nowrap text-sm text-[#616161]">{i?.shift}</td>
+                                        <td className="py-2 px-4 border-b text-nowrap text-sm text-[#616161]">{i?.sets}</td>
+
                                         <td className="py-2 px-4 border-b text-nowrap text-sm text-[#616161]">{i?.timings}</td>
                                         <td className="py-2 px-4 border-b text-nowrap text-sm text-[#616161]">{new Date(i.createdAt).toLocaleDateString()}</td>
                                         <td className="py-2 px-4 border-b flex gap-x-3">
@@ -162,6 +168,14 @@ const AdminDietPlan = () => {
                             <input type="number" placeholder="Fat" className="w-full border px-3 py-2 rounded" onChange={e => setFormData({ ...formData, fat: e.target.value })} />
                             <input type="text" placeholder="Shift" className="w-full border px-3 py-2 rounded" onChange={e => setFormData({ ...formData, shift: e.target.value })} />
                             <input type="text" placeholder="Timings" className="w-full border px-3 py-2 rounded" onChange={e => setFormData({ ...formData, timings: e.target.value })} />
+                            <select
+                                className="w-full border px-3 py-2 rounded mt-2"
+                                value={formData.plan}
+                                onChange={e => setFormData({ ...formData, plan: e.target.value })}
+                            >
+                                <option value="free">Free</option>
+                                <option value="paid">Paid</option>
+                            </select>
                         </div>
                         <div className="flex justify-end gap-2 mt-4">
                             <button className="bg-gray-200 px-4 py-2 rounded" onClick={() => setShowModal(false)}>Cancel</button>
