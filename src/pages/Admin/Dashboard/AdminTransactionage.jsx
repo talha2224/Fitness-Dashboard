@@ -21,6 +21,8 @@ const AdminTransactionage = () => {
         fetchDashboardData();
     }, []);
 
+    console.log(data, 'data')
+
 
     return (
         <div>
@@ -46,15 +48,10 @@ const AdminTransactionage = () => {
                                     <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Transaction Id</th>
                                     <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Transaction Date</th>
                                     <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">User Name</th>
+                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Email</th>
                                     <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Amount</th>
                                     <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Payment Method</th>
-                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Delivery Method</th>
-                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Reciver Delivery Details</th>
-                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Reciver City</th>
-                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Reciver Country</th>
-
                                     <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Status</th>
-                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -62,32 +59,13 @@ const AdminTransactionage = () => {
                                     <tr key={i._id}>
                                         <td className="text-[#616161] py-2 px-4 border-b text-nowrap text-sm">{i?._id}</td>
                                         <td className="text-[#616161] py-2 px-4 border-b text-nowrap text-sm">{new Date(i.createdAt).toLocaleDateString()}</td>
-                                        <td className="text-[#616161] py-2 px-4 border-b text-nowrap text-sm">{i?.userId?.firstName} {i?.userId?.lastName}</td>
-                                        <td className="py-2 px-4 border-b text-nowrap text-sm text-[#007AFF]">{`$ ${i?.amount}`}</td>
-                                        <td className="py-2 px-4 border-b text-nowrap text-sm text-[#616161]">{i?.paymentMethod}</td>
-                                        <td className="py-2 px-4 border-b text-nowrap text-sm text-[#616161]">{i?.deliveryMode}</td>
-                                        <td className="py-2 px-4 border-b text-nowrap text-sm text-[#616161]">{i?.reciverAccountNumber}</td>
-                                        <td className="py-2 px-4 border-b text-nowrap text-sm text-[#616161]">{i?.reciverCity}</td>
-                                        <td className="py-2 px-4 border-b text-nowrap text-sm text-[#616161]">{i?.reciverCountry}</td>
-
+                                        <td className="text-[#616161] py-2 px-4 border-b text-nowrap text-sm">{i?.userId?.name}</td>
+                                        <td className="text-[#616161] py-2 px-4 border-b text-nowrap text-sm">{i?.userId?.email}</td>
+                                        <td className="py-2 px-4 border-b text-nowrap text-sm text-[#007AFF]">{`$ ${i?.amount / 100}`}</td>
+                                        <td className="py-2 px-4 border-b text-nowrap text-sm text-[#616161]">{"Stripe"}</td>
 
                                         <td className="py-2 px-4 border-b">
-                                            <span className={`px-2 py-1 rounded-md text-xs text-nowrap ${i.decline ? 'bg-red-200 text-red-700' : 'bg-[#DCEDFF] text-[#007AFF]'}`}>{(i.decline && !i?.approved) ? 'Decline' : i?.approved ? "Approved" : 'Pending'}</span>
-                                        </td>
-                                        <td className="py-2 px-4 border-b flex gap-x-3">
-
-                                            {
-                                                (!i?.decline && !i?.approved) ?
-                                                    <div className='flex gap-x-3'>
-                                                        {!i?.decline && <span onClick={() => declineRequest(i?._id)} className={`px-2 py-1 cursor-pointer text-nowrap rounded-md text-xs bg-red-200 text-red-700`}>Decline Request</span>}
-                                                        {!i.approved && <span onClick={() => approvedRequest(i?._id)} className={`px-2 py-1 cursor-pointer text-nowrap rounded-md text-xs bg-[#DCEDFF] text-[#007AFF]`}>Approved Request</span>}
-                                                    </div>
-
-                                                    :
-                                                    <span className={`px-2 py-1 cursor-pointer text-nowrap rounded-md text-xs ${i.decline ? 'bg-red-200 text-red-700' : 'bg-[#DCEDFF] text-[#007AFF]'}`}>{i.decline ? "Request Already Decline" : "Request Already Approved"}</span>
-
-                                            }
-
+                                            <span className={`px-2 py-1 cursor-pointer text-nowrap rounded-md text-xs bg-[#DCEDFF] text-[#007AFF]`}>Completed</span>
                                         </td>
                                     </tr>
                                 ))}

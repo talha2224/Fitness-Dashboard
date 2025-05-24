@@ -24,7 +24,7 @@ const LoginPage = () => {
                 localStorage.setItem("uId", response?.data?.data?._id)
                 toast.success('Login successful!');
                 if(formData.email==="admin@asteam.com"){
-                    setTimeout(() => { nav("/admin/dashboard/home") }, 2000);
+                    setTimeout(() => { nav("/admin/dashboard/user") }, 2000);
                 }
                 // else{
                 //     setTimeout(() => { nav("/dashboard/home") }, 2000);

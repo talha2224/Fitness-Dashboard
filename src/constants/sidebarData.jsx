@@ -20,12 +20,12 @@ export const navData = [
 ];
 
 export const adminNav = [
-    {
-        id: 1,
-        link: "home",
-        name: "Home",
-        icon: <MdDashboard className='text-[#FFCC00]' />
-    },
+    // {
+    //     id: 1,
+    //     link: "home",
+    //     name: "Home",
+    //     icon: <MdDashboard className='text-[#FFCC00]' />
+    // },
     {
         id: 7,
         link: "user",
