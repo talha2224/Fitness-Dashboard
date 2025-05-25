@@ -36,7 +36,7 @@ const Sidebar = () => {
 
         <div className="flex-shrink-0 flex items-center gap-x-2 p-5">
           <img src={Logo} alt="" className='h-10' />
-          <span className="text-xl">As Team ANH</span>
+          <span className="text-xl">As Team</span>
         </div>
 
         <div className='mt-10'>
@@ -63,7 +63,7 @@ const Sidebar = () => {
 
             <div className="flex-shrink-0 flex items-center gap-x-2 p-5">
               <img src={Logo} alt="" className='h-10' />
-              <span className="text-xl">As Team ANH</span>
+              <span className="text-xl">As Team</span>
             </div>
 
             <div className='mt-10'>

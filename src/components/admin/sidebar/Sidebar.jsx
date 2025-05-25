@@ -35,7 +35,7 @@ const Sidebar = () => {
 
         <div className="flex-shrink-0 flex items-center gap-x-2 p-5">
           <img src={Logo} alt="" className='h-10' />
-          <span className="text-xl text-white">As Team ANH</span>
+          <span className="text-xl text-white">As Team</span>
         </div>
 
 
@@ -50,7 +50,7 @@ const Sidebar = () => {
 
         <div onClick={() => nav("/")} className='absolute bottom-5 w-[80%] flex items-center gap-x-3 cursor-pointer mx-5 '>
           <IoLogOut className='text-[#FF3B30] cursor-pointer text-xl' />
-          <p className='text-[#C9C9C9]'>Log out</p>
+          <p className='text-[#C9C9C9]'>Esci</p>
         </div>
 
       </div>
@@ -62,7 +62,7 @@ const Sidebar = () => {
 
             <div className="flex-shrink-0 flex items-center gap-x-2 p-5">
               <img src={Logo} alt="" className='h-10' />
-              <span className="text-xl text-white">As Team ANH</span>
+              <span className="text-xl text-white">As Team</span>
             </div>
 
 
@@ -77,7 +77,7 @@ const Sidebar = () => {
 
             <div onClick={() => nav("/")} className='absolute bottom-5 w-[80%] flex items-center gap-x-3 cursor-pointer mx-5 '>
               <IoLogOut className='text-[#FF3B30] cursor-pointer text-xl' />
-              <p className='text-[#C9C9C9]'>Log out</p>
+              <p className='text-[#C9C9C9]'>Esci</p>
             </div>
 
           </div>

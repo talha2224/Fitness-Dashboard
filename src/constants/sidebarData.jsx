@@ -15,7 +15,7 @@ export const navData = [
         id: 7,
         link: "hotline",
         name: "HotLine",
-        icon: <IoCall   />
+        icon: <IoCall />
     }
 ];
 
@@ -29,26 +29,25 @@ export const adminNav = [
     {
         id: 7,
         link: "user",
-        name: "User Managements",
+        name: "Gestione Utenti",
         icon: <LuUser className="text-[#FF2D55]" />
     },
     {
         id: 4,
         link: "transaction",
-        name: "Transaction",
+        name: "Transazioni",
         icon: <MdOutlineSyncAlt className="text-[#34C759]" />
     },
     {
         id: 5,
         link: "diet",
-        name: "Diet Plan",
+        name: "Piano Dietetico",
         icon: <MdDinnerDining className="text-[#46e3ff]" />
     },
     {
-        id: 5,
+        id: 6,
         link: "exercise",
-        name: "Workout Plan",
+        name: "Programma di Allenamento",
         icon: <RiBodyScanFill className="text-[#673cff]" />
     },
-
 ]

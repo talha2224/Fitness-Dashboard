@@ -70,7 +70,7 @@ const VerifyPage = () => {
                 <div className='flex-1 hidden md:flex flex-col h-[100%] bg-[#F3FDFF]'>
                     <div className="flex-shrink-0 flex items-center gap-x-2 p-5">
                         <img src={Logo} alt="" className='h-10' />
-                        <span className="text-xl">As Team ANH</span>
+                        <span className="text-xl">As Team</span>
                     </div>
                     <div className='flex-1 h-[90%]'>
                         <img src={AuthImage} alt="" className='h-[100%]' />

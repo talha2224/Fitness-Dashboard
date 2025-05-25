@@ -85,17 +85,15 @@ const ExercisePlan = () => {
 
         <div>
 
-
             <div className="flex justify-between items-center mb-4 bg-white p-2 rounded-md">
                 <div className="flex items-center space-x-2">
-                    <button className="bg-[#F2F2F2] rounded-md px-5 py-2 text-sm">Filter</button>
-                    <input type="text" placeholder="Search..." className="rounded-md bg-[#F9F9F9] px-3 w-[15rem] py-2 outline-none border" />
+                    <button className="bg-[#F2F2F2] rounded-md px-5 py-2 text-sm">Filtro</button>
+                    <input type="text" placeholder="Cerca..." className="rounded-md bg-[#F9F9F9] px-3 w-[15rem] py-2 outline-none border" />
                 </div>
                 <div className="flex items-center space-x-2">
-                    <button onClick={() => setShowModal(true)} className="bg-[#F2F2F2] rounded-md px-5 py-2 text-sm">Add New</button>
+                    <button onClick={() => setShowModal(true)} className="bg-[#F2F2F2] rounded-md px-5 py-2 text-sm">Aggiungi Nuovo</button>
                 </div>
             </div>
-
 
             {
                 data.length > 0 ?
@@ -104,16 +102,16 @@ const ExercisePlan = () => {
                             <thead>
                                 <tr>
                                     <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Id</th>
-                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Image</th>
-                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Title</th>
-                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Notes</th>
-                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Guide</th>
-                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Sets</th>
-                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Reps</th>
-                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Plan</th>
-                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Duration</th>
-                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Created At</th>
-                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Actions</th>
+                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Immagine</th>
+                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Titolo</th>
+                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Note</th>
+                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Guida</th>
+                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Serie</th>
+                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Ripetizioni</th>
+                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Piano</th>
+                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Durata</th>
+                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Creato il</th>
+                                    <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Azioni</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -130,7 +128,7 @@ const ExercisePlan = () => {
                                         <td className="py-2 px-4 border-b text-nowrap text-sm text-[#616161]">{i?.duration}</td>
                                         <td className="py-2 px-4 border-b text-nowrap text-sm text-[#616161]">{new Date(i.createdAt).toLocaleDateString()}</td>
                                         <td className="py-2 px-4 border-b flex gap-x-3">
-                                            <span onClick={() => deleteDiet(i?._id)} className={`px-2 py-1 cursor-pointer text-nowrap rounded-md text-xs bg-red-200 text-red-700`}>Delete</span>
+                                            <span onClick={() => deleteDiet(i?._id)} className={`px-2 py-1 cursor-pointer text-nowrap rounded-md text-xs bg-red-200 text-red-700`}>Elimina</span>
                                         </td>
                                     </tr>
                                 ))}
@@ -138,41 +136,39 @@ const ExercisePlan = () => {
                         </table>
                     </div>
                     :
-                    <h1 className='text-center mt-48 text-lg'>No Workout Plan Found</h1>
+                    <h1 className='text-center mt-48 text-lg'>Nessun piano di allenamento trovato</h1>
             }
             {showModal && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
                     <div className="bg-white p-6 rounded-lg w-[400px]">
-                        <h2 className="text-lg font-semibold mb-4">Add New Workout Plan</h2>
+                        <h2 className="text-lg font-semibold mb-4">Aggiungi nuovo piano di allenamento</h2>
                         <div className="space-y-3">
-                            <input type="text" placeholder="Title" className="w-full border px-3 py-2 rounded" onChange={e => setFormData({ ...formData, title: e.target.value })} />
+                            <input type="text" placeholder="Titolo" className="w-full border px-3 py-2 rounded" onChange={e => setFormData({ ...formData, title: e.target.value })} />
                             <input type="file" className="w-full" onChange={e => setFormData({ ...formData, image: e.target.files[0] })} />
-                            <textarea type="text" placeholder="Notes" className="w-full border px-3 py-2 rounded" onChange={e => setFormData({ ...formData, notes: e.target.value })} />
-                            <textarea type="number" placeholder="Guide" className="w-full border px-3 py-2 rounded" onChange={e => setFormData({ ...formData, guide: e.target.value })} />
-                            <input type="number" placeholder="Sets" className="w-full border px-3 py-2 rounded" onChange={e => setFormData({ ...formData, sets: e.target.value })} />
-                            <input type="number" placeholder="Reps" className="w-full border px-3 py-2 rounded" onChange={e => setFormData({ ...formData, reps: e.target.value })} />
-                            <input type="number" placeholder="Duration" className="w-full border px-3 py-2 rounded" onChange={e => setFormData({ ...formData, duration: e.target.value })} />
+                            <textarea type="text" placeholder="Note" className="w-full border px-3 py-2 rounded" onChange={e => setFormData({ ...formData, notes: e.target.value })} />
+                            <textarea type="number" placeholder="Guida" className="w-full border px-3 py-2 rounded" onChange={e => setFormData({ ...formData, guide: e.target.value })} />
+                            <input type="number" placeholder="Serie" className="w-full border px-3 py-2 rounded" onChange={e => setFormData({ ...formData, sets: e.target.value })} />
+                            <input type="number" placeholder="Ripetizioni" className="w-full border px-3 py-2 rounded" onChange={e => setFormData({ ...formData, reps: e.target.value })} />
+                            <input type="number" placeholder="Durata" className="w-full border px-3 py-2 rounded" onChange={e => setFormData({ ...formData, duration: e.target.value })} />
                             <select
                                 className="w-full border px-3 py-2 rounded mt-2"
                                 value={formData.plan}
                                 onChange={e => setFormData({ ...formData, plan: e.target.value })}
                             >
-                                <option value="free">Free</option>
-                                <option value="paid">Paid</option>
+                                <option value="free">Gratuito</option>
+                                <option value="paid">A pagamento</option>
                             </select>
                         </div>
                         <div className="flex justify-end gap-2 mt-4">
-                            <button className="bg-gray-200 px-4 py-2 rounded" onClick={() => setShowModal(false)}>Cancel</button>
-                            <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={handleAddDiet}>Add</button>
+                            <button className="bg-gray-200 px-4 py-2 rounded" onClick={() => setShowModal(false)}>Annulla</button>
+                            <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={handleAddDiet}>Aggiungi</button>
                         </div>
                     </div>
                 </div>
             )}
 
-
-
-
         </div>
+
 
     )
 }

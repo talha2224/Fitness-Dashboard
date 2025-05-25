@@ -128,14 +128,14 @@ const AdminUserPage = () => {
 
             <div className="flex justify-between items-center mb-4 bg-white p-2 rounded-md">
                 <div className="flex items-center space-x-2">
-                    <button className="bg-[#F2F2F2] rounded-md px-5 py-2 text-sm">Filter</button>
-                    <input type="text" placeholder="Search..." className="rounded-md bg-[#F9F9F9] px-3 w-[15rem] py-2 outline-none border" />
+                    <button className="bg-[#F2F2F2] rounded-md px-5 py-2 text-sm">Filtro</button>
+                    <input type="text" placeholder="Cerca..." className="rounded-md bg-[#F9F9F9] px-3 w-[15rem] py-2 outline-none border" />
                 </div>
                 <div className="flex items-center space-x-2">
                     <div className='flex items-center gap-x-3 bg-[#FBFBFB] rounded-full p-2'>
-                        <button onClick={() => setCurrentView("table")} className={`${currentView === "table" ? "bg-white border" : "text-[#616161]"} py-1 px-6 rounded-full text-sm`}>Table</button>
+                        <button onClick={() => setCurrentView("table")} className={`${currentView === "table" ? "bg-white border" : "text-[#616161]"} py-1 px-6 rounded-full text-sm`}>Tabella</button>
                     </div>
-                    <button className="bg-[#F2F2F2] rounded-md px-5 py-2 text-sm">Sort</button>
+                    <button className="bg-[#F2F2F2] rounded-md px-5 py-2 text-sm">Ordina</button>
                 </div>
             </div>
 
@@ -144,13 +144,13 @@ const AdminUserPage = () => {
                     <table className="min-w-full bg-white border rounded-md">
                         <thead>
                             <tr>
-                                <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Username</th>
-                                <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Contact Info</th>
-                                <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Registration Date</th>
-                                <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Account Type</th>
-                                <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Subscription Plan</th>
-                                <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Status</th>
-                                <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Actions</th>
+                                <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Nome utente</th>
+                                <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Contatti</th>
+                                <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Data di registrazione</th>
+                                <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Tipo di account</th>
+                                <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Piano di abbonamento</th>
+                                <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Stato</th>
+                                <th className="py-2 px-4 border-b text-left font-normal text-sm text-nowrap">Azioni</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -159,18 +159,18 @@ const AdminUserPage = () => {
                                     <td className="text-[#616161] py-2 px-4 border-b text-nowrap">{`${user.name}`}</td>
                                     <td className="text-[#616161] py-2 px-4 border-b text-nowrap">{user.email}</td>
                                     <td className="text-[#616161] py-2 px-4 border-b text-nowrap">{new Date(user.createdAt).toLocaleDateString()}</td>
-                                    <td className="text-[#616161] py-2 px-4 border-b text-nowrap">User</td>
+                                    <td className="text-[#616161] py-2 px-4 border-b text-nowrap">Utente</td>
                                     <td className="text-[#616161] py-2 px-4 border-b text-nowrap">{user.plan}</td>
                                     <td className="py-2 px-4 border-b">
-                                        <span className={`px-2 py-1 rounded-md text-xs text-nowrap ${user.accountBlocked ? 'bg-red-200 text-red-700' : 'bg-[#DCEDFF] text-[#007AFF]'}`}>{user.accountBlocked ? 'Suspended' : 'Active'}</span>
+                                        <span className={`px-2 py-1 rounded-md text-xs text-nowrap ${user.accountBlocked ? 'bg-red-200 text-red-700' : 'bg-[#DCEDFF] text-[#007AFF]'}`}>{user.accountBlocked ? 'Sospeso' : 'Attivo'}</span>
                                     </td>
                                     <td className="py-2 px-4 border-b flex items-center gap-x-3">
                                         {
-                                            !user.accountBlocked ? <span onClick={() => handleAccountSuspend(user?._id)} className={`px-2 py-1 cursor-pointer text-nowrap rounded-md text-xs bg-red-200 text-red-700`}>Suspend Account</span> :
-                                                <span onClick={() => handleReactivateAccount(user?._id)} className={`px-2 py-1 cursor-pointer text-nowrap rounded-md text-xs bg-[#DCEDFF] text-[#007AFF]`}>Reactivate Account</span>
+                                            !user.accountBlocked ? <span onClick={() => handleAccountSuspend(user?._id)} className={`px-2 py-1 cursor-pointer text-nowrap rounded-md text-xs bg-red-200 text-red-700`}>Sospendi account</span> :
+                                                <span onClick={() => handleReactivateAccount(user?._id)} className={`px-2 py-1 cursor-pointer text-nowrap rounded-md text-xs bg-[#DCEDFF] text-[#007AFF]`}>Riattiva account</span>
                                         }
-                                        <span onClick={() => { setSelectedUserId(user?._id); existingUserWorkout(user?._id); setshowAssignWorkoutModal(!showAssignMealModal) }} className={`px-2 py-1 cursor-pointer text-nowrap rounded-md text-xs bg-[#DCEDFF] text-[#007AFF]`}>Assign Workout</span>
-                                        <span onClick={() => { setSelectedUserId(user?._id); existingUserMeal(user?._id); setshowAssignMealModal(!showAssignMealModal) }} className={`px-2 py-1 cursor-pointer text-nowrap rounded-md text-xs bg-[#DCEDFF] text-[#007AFF]`}>Assign Diet</span>
+                                        <span onClick={() => { setSelectedUserId(user?._id); existingUserWorkout(user?._id); setshowAssignWorkoutModal(!showAssignMealModal) }} className={`px-2 py-1 cursor-pointer text-nowrap rounded-md text-xs bg-[#DCEDFF] text-[#007AFF]`}>Assegna allenamento</span>
+                                        <span onClick={() => { setSelectedUserId(user?._id); existingUserMeal(user?._id); setshowAssignMealModal(!showAssignMealModal) }} className={`px-2 py-1 cursor-pointer text-nowrap rounded-md text-xs bg-[#DCEDFF] text-[#007AFF]`}>Assegna dieta</span>
 
                                     </td>
                                 </tr>
@@ -182,14 +182,14 @@ const AdminUserPage = () => {
             </div>
 
 
-            {/* ADD MODAL HERE  */}
+            {/* MODALE ASSEGNA DIETA */}
             {showAssignMealModal && (
                 <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
                     <div className="bg-white p-6 rounded-md w-[400px] relative">
-                        <h2 className="text-lg font-semibold mb-4">Assign Meal</h2>
+                        <h2 className="text-lg font-semibold mb-4">Assegna dieta</h2>
 
                         <div className="max-h-[300px] overflow-y-auto space-y-2">
-                            <h3 className="font-medium text-sm text-gray-600 mb-2">Already Assigned:</h3>
+                            <h3 className="font-medium text-sm text-gray-600 mb-2">Già assegnate:</h3>
                             {existingAssignMeal.length > 0 ? (
                                 <ul className="mb-4">
                                     {existingAssignMeal.map((meal) => (
@@ -200,10 +200,10 @@ const AdminUserPage = () => {
                                     ))}
                                 </ul>
                             ) : (
-                                <p className="text-sm text-gray-500 mb-4">No meals assigned yet.</p>
+                                <p className="text-sm text-gray-500 mb-4">Nessuna dieta assegnata.</p>
                             )}
 
-                            <h3 className="font-medium text-sm text-gray-600 mb-2">Assign New Meals:</h3>
+                            <h3 className="font-medium text-sm text-gray-600 mb-2">Assegna nuove diete:</h3>
                             {allDiet.map((meal) => (
                                 <div key={meal._id} className="flex items-center space-x-2">
                                     <input
@@ -229,12 +229,12 @@ const AdminUserPage = () => {
                                 onClick={() => setshowAssignMealModal(false)}
                                 className="px-4 py-2 bg-gray-200 rounded"
                             >
-                                Cancel
+                                Annulla
                             </button>
-                            <button onClick={assignMeal} className="px-4 py-2 bg-blue-600 text-white rounded">Assign</button>
+                            <button onClick={assignMeal} className="px-4 py-2 bg-blue-600 text-white rounded">Assegna</button>
                         </div>
 
-                        {/* Close button */}
+                        {/* Pulsante chiudi */}
                         <button
                             onClick={() => setshowAssignMealModal(false)}
                             className="absolute top-2 right-2 text-xl"
@@ -245,13 +245,14 @@ const AdminUserPage = () => {
                 </div>
             )}
 
+            {/* MODALE ASSEGNA ALLENAMENTO */}
             {showAssignWorkoutModal && (
                 <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
                     <div className="bg-white p-6 rounded-md w-[400px] relative">
-                        <h2 className="text-lg font-semibold mb-4">Assign Workout</h2>
+                        <h2 className="text-lg font-semibold mb-4">Assegna allenamento</h2>
 
                         <div className="max-h-[300px] overflow-y-auto space-y-2">
-                            <h3 className="font-medium text-sm text-gray-600 mb-2">Already Assigned:</h3>
+                            <h3 className="font-medium text-sm text-gray-600 mb-2">Già assegnati:</h3>
                             {existingAssignWorkout.length > 0 ? (
                                 <ul className="mb-4">
                                     {existingAssignWorkout.map((meal) => (
@@ -262,10 +263,10 @@ const AdminUserPage = () => {
                                     ))}
                                 </ul>
                             ) : (
-                                <p className="text-sm text-gray-500 mb-4">No workout assigned yet.</p>
+                                <p className="text-sm text-gray-500 mb-4">Nessun allenamento assegnato.</p>
                             )}
 
-                            <h3 className="font-medium text-sm text-gray-600 mb-2">Assign New Workout:</h3>
+                            <h3 className="font-medium text-sm text-gray-600 mb-2">Assegna nuovi allenamenti:</h3>
                             {allWorkout.map((meal) => (
                                 <div key={meal._id} className="flex items-center space-x-2">
                                     <input
@@ -291,12 +292,12 @@ const AdminUserPage = () => {
                                 onClick={() => setshowAssignWorkoutModal(false)}
                                 className="px-4 py-2 bg-gray-200 rounded"
                             >
-                                Cancel
+                                Annulla
                             </button>
-                            <button onClick={assignWorkout} className="px-4 py-2 bg-blue-600 text-white rounded">Assign</button>
+                            <button onClick={assignWorkout} className="px-4 py-2 bg-blue-600 text-white rounded">Assegna</button>
                         </div>
 
-                        {/* Close button */}
+                        {/* Pulsante chiudi */}
                         <button
                             onClick={() => setshowAssignWorkoutModal(false)}
                             className="absolute top-2 right-2 text-xl"
@@ -307,10 +308,8 @@ const AdminUserPage = () => {
                 </div>
             )}
 
-
-
-
         </div>
+
     );
 };
 

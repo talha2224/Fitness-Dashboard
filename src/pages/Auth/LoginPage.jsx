@@ -23,23 +23,20 @@ const LoginPage = () => {
                 toast.dismiss(loader)
                 localStorage.setItem("uId", response?.data?.data?._id)
                 toast.success('Login successful!');
-                if(formData.email==="admin@asteam.com"){
+                if (formData.email === "admin@asteam.com") {
                     setTimeout(() => { nav("/admin/dashboard/user") }, 2000);
                 }
-                // else{
-                //     setTimeout(() => { nav("/dashboard/home") }, 2000);
-                // }
             }
         }
         catch (error) {
             toast.dismiss(loader)
             if (error.response) {
-                if(error?.response?.data?.msg=="Account not verified Otp Has Been Sent To Your Email"){
+                if (error?.response?.data?.msg == "Account not verified Otp Has Been Sent To Your Email") {
                     toast.error(error?.response?.data?.msg || 'Login failed. Please try again.');
-                    localStorage.setItem("uEmail",formData?.email)
+                    localStorage.setItem("uEmail", formData?.email)
                     setTimeout(() => { nav("/verify") }, 2000);
                 }
-                else{
+                else {
                     toast.error(error?.response?.data?.msg || 'Login failed. Please try again.');
                 }
             }
@@ -55,27 +52,24 @@ const LoginPage = () => {
         <div className='flex justify-center items-center w-screen h-screen'>
             <div className='flex-1 hidden md:flex flex-col h-[100%] bg-[#F3FDFF]'>
                 <div className="flex-shrink-0 flex items-center gap-x-2 p-5">
-                    {/* <img src={Logo} alt="" className='h-10' /> */}
                     <span className="text-xl">As Team</span>
                 </div>
-                {/* <div className='flex-1 h-[90%]'> */}
-                    <img src={AuthImage} alt="" />
-                {/* </div> */}
+                <img src={AuthImage} alt="" />
             </div>
 
             <div className='flex-1 flex justify-center items-center flex-col h-[100%] overflow-y-auto pt-0'>
                 <div className='w-full max-w-md p-6'>
-                    <h2 className="text-2xl mb-4 text-[#324B50]">Sign in to your Account</h2>
-                    <p className='text-sm text-[#324B50]'>Enter your email and password to log In</p>
+                    <h2 className="text-2xl mb-4 text-[#324B50]">Accedi al tuo account</h2>
+                    <p className='text-sm text-[#324B50]'>Inserisci la tua email e password per effettuare il login</p>
                     <form className="">
-                        <input required={true} type="email" name="email" placeholder="Email Address" className="w-[100%] mt-2 border p-2 rounded outline-none block" onChange={handleChange} />
+                        <input required={true} type="email" name="email" placeholder="Indirizzo email" className="w-[100%] mt-2 border p-2 rounded outline-none block" onChange={handleChange} />
                         <input required={true} type="password" name="password" placeholder="Password" className="w-[100%] mt-2 border p-2 rounded outline-none block" onChange={handleChange} />
                     </form>
-                    <button className="w-full bg-[#9FE7F5] p-2 rounded mt-4" onClick={handleLogin}>Sign In</button>
-                    {/* <p className="text-center mt-2 text-[#3D8977]">Don't have an account? <Link to="/register" className="text-blue-500">Sign Up</Link></p> */}
+                    <button className="w-full bg-[#9FE7F5] p-2 rounded mt-4" onClick={handleLogin}>Accedi</button>
                 </div>
             </div>
         </div>
+
     );
 };
 
